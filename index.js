@@ -298,67 +298,45 @@ Example:
 2025-01-01
 */
 
-const loveStartDate =
-new Date("2025-01-01 00:00:00");
 
-function updateLoveTimer(){
+const loveStartDate = new Date("2025-01-01T00:00:00");
 
-  const now = new Date();
+function updateLoveTimer() {
+    const now = new Date();
+    const difference = now.getTime() - loveStartDate.getTime();
 
-  const difference =
-  now - loveStartDate;
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
 
-  const days =
-  Math.floor(
-    difference /
-    (1000 * 60 * 60 * 24)
-  );
+    const hours = Math.floor(
+        (difference % (1000 * 60 * 60 * 24)) /
+        (1000 * 60 * 60)
+    );
 
-  const hours =
-  Math.floor(
-    (difference %
-    (1000 * 60 * 60 * 24))
-    /
-    (1000 * 60 * 60)
-  );
+    const minutes = Math.floor(
+        (difference % (1000 * 60 * 60)) /
+        (1000 * 60)
+    );
 
-  const minutes =
-  Math.floor(
-    (difference %
-    (1000 * 60 * 60))
-    /
-    (1000 * 60)
-  );
+    const seconds = Math.floor(
+        (difference % (1000 * 60)) /
+        1000
+    );
 
-  const seconds =
-  Math.floor(
-    (difference %
-    (1000 * 60))
-    /
-    1000
-  );
+    document.getElementById("days").textContent =
+        String(days).padStart(3, "0");
 
-  document.getElementById("days")
-  .innerHTML =
-  String(days).padStart(3,"0");
+    document.getElementById("hours").textContent =
+        String(hours).padStart(2, "0");
 
-  document.getElementById("hours")
-  .innerHTML =
-  String(hours).padStart(2,"0");
+    document.getElementById("minutes").textContent =
+        String(minutes).padStart(2, "0");
 
-  document.getElementById("minutes")
-  .innerHTML =
-  String(minutes).padStart(2,"0");
-
-  document.getElementById("seconds")
-  .innerHTML =
-  String(seconds).padStart(2,"0");
-
+    document.getElementById("seconds").textContent =
+        String(seconds).padStart(2, "0");
 }
 
-setInterval(updateLoveTimer,1000);
-
 updateLoveTimer();
+setInterval(updateLoveTimer, 1000);
 
 /* ========================= */
 /* SURPRISE BUTTON */
