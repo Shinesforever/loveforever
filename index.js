@@ -299,8 +299,7 @@ Example:
 */
 
 
-const loveStartDate = new Date("2025-01-01T00:00:00");
-
+const loveStartDate = new Date("2022-06-11T00:00:00");
 function updateLoveTimer() {
     const now = new Date();
     const difference = now.getTime() - loveStartDate.getTime();
